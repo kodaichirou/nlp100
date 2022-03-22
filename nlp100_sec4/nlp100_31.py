@@ -16,7 +16,15 @@ with open(filename, encoding="utf-8",mode='r') as f:
       sentences.append(morphs)
       morphs = []
 
-# 確認
-for morph in sentences[105]:
-  print(morph)
+ans=set()
+for sentence in sentences:
+    for morph in sentence:
+        if morph['pos']=='動詞':
+            ans.add(morph['surface'])
 
+print(f'動詞の表層系の種類：{len(ans)}\n')
+print('---sample---')
+for v in list(ans)[:10]:
+    print(v)
+
+#set は順番関係ないから出力が毎回異なる？
